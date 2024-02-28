@@ -21,10 +21,10 @@ jobs:
       - name: Setup Node.js 
         uses: actions/setup-node@v2
         with:
-          node-version: latest
+          node-version: 20
 
       # Install deps
-      - name: Install Yarn
+      - name: Install deps
         run: npm install
 
       # Compile the code
