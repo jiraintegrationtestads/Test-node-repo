@@ -6,6 +6,10 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  NODE_AUTH_TOKEN: ${{env.NODE_AUTH_TOKEN}}
+  VAR: "aaa"
+
 jobs:
   pull-request:
     runs-on: ubuntu-latest
@@ -16,6 +20,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: echo token
+        run: echo $env.NODE_AUTH_TOKEN
 
       # Setup Nodejs
       - name: Setup Node.js 
