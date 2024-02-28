@@ -21,9 +21,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: echo token
-        run: echo $env.NODE_AUTH_TOKEN
-
       # Setup Nodejs
       - name: Setup Node.js 
         uses: actions/setup-node@v2
@@ -34,6 +31,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{env.NODE_AUTH_TOKEN}}
           VAR: "aaa"
+
+      
+      - name: echo token
+        run: echo $env.NODE_AUTH_TOKEN
 
       # Install deps
       - name: Install deps
