@@ -6,9 +6,9 @@ on:
       - main
   workflow_dispatch:
 
-env:
-  NODE_AUTH_TOKEN: ${{env.NODE_AUTH_TOKEN}}
-  VAR: "aaa"
+# env:
+#   NODE_AUTH_TOKEN: ${{env.NODE_AUTH_TOKEN}}
+#   VAR: "aaa"
 
 jobs:
   pull-request:
@@ -35,6 +35,9 @@ jobs:
       
       - name: echo token
         run: echo $env.NODE_AUTH_TOKEN
+
+      - name: echo token
+        run: echo ${{env.NODE_AUTH_TOKEN}}
 
       # Install deps
       - name: Install deps
