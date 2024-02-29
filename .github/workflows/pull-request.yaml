@@ -29,15 +29,13 @@ jobs:
           node-version: 20
           registry-url: 'https://npm.pkg.github.com/adserve'   
         env:
-          NODE_AUTH_TOKEN: ${{env.NODE_AUTH_TOKEN}}
-          VAR: "aaa"
-
+          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
       
       - name: echo token
         run: echo $env.NODE_AUTH_TOKEN
 
       - name: echo token
-        run: echo ${{env.NODE_AUTH_TOKEN}}
+        run: echo ${{secrets.NODE_AUTH_TOKEN}}
 
       # Install deps
       - name: Install deps
