@@ -6,6 +6,12 @@ on:
       - main
   workflow_dispatch:
 
+# env:
+#   NODE_AUTH_TOKEN: ${{env.NODE_AUTH_TOKEN}}
+#   VAR: "aaa"
+
+
+
 jobs:
   pull-request:
     runs-on: ubuntu-latest
@@ -21,12 +27,21 @@ jobs:
       - name: Setup Node.js 
         uses: actions/setup-node@v2
         with:
+          always-auth: true
           node-version: 20
+          registry-url: 'https://npm.pkg.github.com/adserve'   
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+      
+      - name: echo token
+        run: echo $env.NODE_AUTH_TOKEN
 
       # Install deps
       - name: Install deps
         run: npm install
-
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+          
       # Compile the code
       - name: Build project
         run: npm run build
