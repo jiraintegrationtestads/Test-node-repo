@@ -36,13 +36,12 @@ jobs:
       - name: echo token
         run: echo $env.NODE_AUTH_TOKEN
 
-      - name: echo token
-        run: echo ${{secrets.NODE_AUTH_TOKEN}}
-
       # Install deps
       - name: Install deps
         run: npm install
-
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+          
       # Compile the code
       - name: Build project
         run: npm run build
